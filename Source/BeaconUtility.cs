@@ -8,6 +8,45 @@ namespace BeaconOfHope
 {
     public static class BeaconUtility
     {
+        // Track if an incident was triggered by a beacon
+        private static Dictionary<string, bool> beaconTriggeredEvents = new Dictionary<string, bool>();
+        
+        // For testing: Force trigger an event through a command
+        public static void TestTriggerEvent(Map map, string eventType)
+        {
+            if (map == null) return;
+            
+            IncidentDef incident = null;
+            
+            switch (eventType.ToLower())
+            {
+                case "wanderer":
+                    incident = IncidentDefOf.WandererJoin;
+                    break;
+                case "refugee":
+                    incident = DefDatabase<IncidentDef>.GetNamed("RefugeePodCrash", false);
+                    break;
+                case "chased":
+                    incident = DefDatabase<IncidentDef>.GetNamed("RefugeeChased", false);
+                    break;
+                case "pod":
+                    incident = DefDatabase<IncidentDef>.GetNamed("ShipChunkDrop", false);
+                    break;
+                case "raid":
+                    incident = IncidentDefOf.RaidEnemy;
+                    break;
+            }
+            
+            if (incident != null)
+            {
+                // Mark as beacon-triggered for notification
+                MarkEventAsBeaconTriggered(incident.defName);
+                
+                // Execute the incident
+                IncidentParms parms = StorytellerUtility.DefaultParmsNow(incident.category, map);
+                incident.Worker.TryExecute(parms);
+            }
+        }
         // Get all active beacons on a map
         public static IEnumerable<CompBeaconBroadcast> GetActiveBeacons(Map map)
         {
@@ -26,6 +65,14 @@ namespace BeaconOfHope
         // Get the event chance multiplier based on active beacons
         public static float GetEventChanceMultiplier(Map map, IncidentDef incident)
         {
+            // Check if this is a potential beacon-influenced event
+            bool isPotentialBeaconEvent = 
+                incident == IncidentDefOf.WandererJoin || 
+                incident.defName == "RefugeePodCrash" || 
+                incident.defName == "RefugeeChased" ||
+                incident.defName == "ShipChunkDrop" || 
+                incident.defName.Contains("TransportPod");
+
             if (map == null)
                 return 1f;
                 
@@ -81,7 +128,34 @@ namespace BeaconOfHope
                 multiplier += openBroadcastCount * 0.4f;
             }
             
+            // If the multiplier is greater than 1, it means beacons are affecting this event
+            if (multiplier > 1f)
+            {
+                MarkEventAsBeaconTriggered(incident.defName);
+            }
+            
             return multiplier;
+        }
+        
+        // Mark an event as being triggered by a beacon
+        public static void MarkEventAsBeaconTriggered(string incidentDefName)
+        {
+            beaconTriggeredEvents[incidentDefName] = true;
+        }
+        
+        // Check if an incident was triggered by a beacon
+        public static bool WasTriggeredByBeacon(string incidentDefName)
+        {
+            return beaconTriggeredEvents.TryGetValue(incidentDefName, out bool triggered) && triggered;
+        }
+        
+        // Reset the beacon trigger for an incident
+        public static void ResetBeaconTrigger(string incidentDefName)
+        {
+            if (beaconTriggeredEvents.ContainsKey(incidentDefName))
+            {
+                beaconTriggeredEvents[incidentDefName] = false;
+            }
         }
         
         // Calculate raid points multiplier based on beacon usage
@@ -93,6 +167,8 @@ namespace BeaconOfHope
             // Count active beacons in open broadcast mode
             int openBroadcastCount = GetActiveBeacons(map)
                 .Count(b => b.CurrentMode == BeaconBroadcastMode.OpenBroadcast);
+            
+            // No need to mark raid events here as they're handled in GetEventChanceMultiplier
                 
             // Each open broadcast beacon increases raid points by 15%
             return 1f + (openBroadcastCount * 0.15f);

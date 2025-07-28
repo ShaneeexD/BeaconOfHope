@@ -152,6 +152,42 @@ namespace BeaconOfHope
                 defaultDesc = "The current broadcast mode of this beacon.",
                 action = () => {}
             };
+            
+            // Debug test gizmos - only show in dev mode
+            if (Prefs.DevMode)
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = "Debug: Test Events",
+                    defaultDesc = "Test beacon events (Dev Mode only).",
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/Dev"),
+                    action = () => {
+                        List<FloatMenuOption> options = new List<FloatMenuOption>();
+                        
+                        options.Add(new FloatMenuOption("Test Wanderer Join", () => {
+                            BeaconUtility.TestTriggerEvent(parent.Map, "wanderer");
+                        }));
+                        
+                        options.Add(new FloatMenuOption("Test Refugee Pod", () => {
+                            BeaconUtility.TestTriggerEvent(parent.Map, "refugee");
+                        }));
+                        
+                        options.Add(new FloatMenuOption("Test Refugee Chased", () => {
+                            BeaconUtility.TestTriggerEvent(parent.Map, "chased");
+                        }));
+                        
+                        options.Add(new FloatMenuOption("Test Transport Pod", () => {
+                            BeaconUtility.TestTriggerEvent(parent.Map, "pod");
+                        }));
+                        
+                        options.Add(new FloatMenuOption("Test Raid", () => {
+                            BeaconUtility.TestTriggerEvent(parent.Map, "raid");
+                        }));
+                        
+                        Find.WindowStack.Add(new FloatMenu(options));
+                    }
+                };
+            }
         }
         
         public static string GetModeDescription(BeaconBroadcastMode mode)
