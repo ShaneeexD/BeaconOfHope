@@ -213,9 +213,12 @@ namespace BeaconOfHope
             ThingDef apparelDef = DefDatabase<ThingDef>.GetNamed("Apparel_BasicShirt");
             ThingDef pantsDef = DefDatabase<ThingDef>.GetNamed("Apparel_Pants");
             
+            // Get default stuff for apparel (cloth)
+            ThingDef stuffDef = ThingDefOf.Cloth;
+            
             // Create and add basic apparel
-            Thing shirt = ThingMaker.MakeThing(apparelDef);
-            Thing pants = ThingMaker.MakeThing(pantsDef);
+            Thing shirt = ThingMaker.MakeThing(apparelDef, stuffDef);
+            Thing pants = ThingMaker.MakeThing(pantsDef, stuffDef);
             
             if (shirt != null && shirt is Apparel)
             {
@@ -239,7 +242,7 @@ namespace BeaconOfHope
                     // Medical equipment if available
                     if (DefDatabase<ThingDef>.GetNamedSilentFail("Apparel_Stethoscope") != null)
                     {
-                        Thing medEquipment = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_Stethoscope"));
+                        Thing medEquipment = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_Stethoscope"), stuffDef);
                         if (medEquipment != null && medEquipment is Apparel)
                         {
                             pawn.apparel.Wear((Apparel)medEquipment);
@@ -251,7 +254,7 @@ namespace BeaconOfHope
                     // Datapad or similar if available
                     if (DefDatabase<ThingDef>.GetNamedSilentFail("Apparel_Glasses") != null)
                     {
-                        Thing glasses = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_Glasses"));
+                        Thing glasses = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_Glasses"), stuffDef);
                         if (glasses != null && glasses is Apparel)
                         {
                             pawn.apparel.Wear((Apparel)glasses);
@@ -273,7 +276,7 @@ namespace BeaconOfHope
                     // Tool belt or similar if available
                     if (DefDatabase<ThingDef>.GetNamedSilentFail("Apparel_ToolBelt") != null)
                     {
-                        Thing toolBelt = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_ToolBelt"));
+                        Thing toolBelt = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_ToolBelt"), stuffDef);
                         if (toolBelt != null && toolBelt is Apparel)
                         {
                             pawn.apparel.Wear((Apparel)toolBelt);
@@ -290,7 +293,7 @@ namespace BeaconOfHope
                     // Mining helmet if available
                     if (DefDatabase<ThingDef>.GetNamedSilentFail("Apparel_SimpleHelmet") != null)
                     {
-                        Thing helmet = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_SimpleHelmet"));
+                        Thing helmet = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_SimpleHelmet"), stuffDef);
                         if (helmet != null && helmet is Apparel)
                         {
                             pawn.apparel.Wear((Apparel)helmet);
@@ -307,7 +310,7 @@ namespace BeaconOfHope
                     // Cowboy hat
                     if (DefDatabase<ThingDef>.GetNamedSilentFail("Apparel_CowboyHat") != null)
                     {
-                        Thing hat = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_CowboyHat"));
+                        Thing hat = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_CowboyHat"), stuffDef);
                         if (hat != null && hat is Apparel)
                         {
                             pawn.apparel.Wear((Apparel)hat);
@@ -324,7 +327,7 @@ namespace BeaconOfHope
                     // Flak vest if available
                     if (DefDatabase<ThingDef>.GetNamedSilentFail("Apparel_FlakVest") != null)
                     {
-                        Thing vest = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_FlakVest"));
+                        Thing vest = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Apparel_FlakVest"), stuffDef);
                         if (vest != null && vest is Apparel)
                         {
                             pawn.apparel.Wear((Apparel)vest);
