@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 
@@ -95,15 +96,37 @@ namespace BeaconOfHope
                 
                 if (pawn != null)
                 {
-                    // Spawn the pawn near the beacon
-                    IntVec3 spawnLoc = CellFinder.RandomClosewalkCellNear(beacon.Position, map, 5);
-                    GenSpawn.Spawn(pawn, spawnLoc, map);
-                    
                     // Add special thought
                     pawn.needs.mood.thoughts.memories.TryGainMemory(ThoughtDef.Named("ArrivedViaBeacon"));
                     
+                    // Find drop location outside home area but still walkable
+                    IntVec3 dropCellNear;
+                    
+                    // Try to find a spot outside the home area
+                    if (!RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(beacon.Position, map, 10f, out dropCellNear))
+                    {
+                        // Fallback: Find any valid spot near the beacon
+                        dropCellNear = CellFinder.RandomClosewalkCellNear(beacon.Position, map, 10);
+                    }
+                    
+                    // Make sure the pawn is in the player faction
+                    pawn.SetFaction(Faction.OfPlayer);
+                    
+                    // Spawn the pawn
+                    GenSpawn.Spawn(pawn, dropCellNear, map);
+                    
+                    // Create a simple visual effect for the drop pod landing
+                    FleckMaker.ThrowSmoke(dropCellNear.ToVector3(), map, 2f);
+                    FleckMaker.ThrowLightningGlow(dropCellNear.ToVector3(), map, 2f);
+                    
+                    // Create a letter notification
+                    Find.LetterStack.ReceiveLetter("Colonist Arrived", 
+                        $"{pawn.LabelShort} has arrived via drop pod in response to your beacon signal.", 
+                        LetterDefOf.PositiveEvent, 
+                        pawn);
+                    
                     // Display message
-                    string text = $"{pawn.LabelShort} has arrived in response to your beacon signal.";
+                    string text = $"{pawn.LabelShort} has arrived via drop pod in response to your beacon signal.";
                     Messages.Message(text, pawn, MessageTypeDefOf.PositiveEvent);
                     
                     // Flash effect at beacon
