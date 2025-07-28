@@ -160,7 +160,6 @@ namespace BeaconOfHope
                 {
                     defaultLabel = "Debug: Test Events",
                     defaultDesc = "Test beacon events (Dev Mode only).",
-                    icon = ContentFinder<Texture2D>.Get("UI/Commands/Dev"),
                     action = () => {
                         List<FloatMenuOption> options = new List<FloatMenuOption>();
                         
@@ -170,10 +169,6 @@ namespace BeaconOfHope
                         
                         options.Add(new FloatMenuOption("Test Refugee Pod", () => {
                             BeaconUtility.TestTriggerEvent(parent.Map, "refugee");
-                        }));
-                        
-                        options.Add(new FloatMenuOption("Test Refugee Chased", () => {
-                            BeaconUtility.TestTriggerEvent(parent.Map, "chased");
                         }));
                         
                         options.Add(new FloatMenuOption("Test Transport Pod", () => {

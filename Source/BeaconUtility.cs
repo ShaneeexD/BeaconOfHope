@@ -26,9 +26,6 @@ namespace BeaconOfHope
                 case "refugee":
                     incident = DefDatabase<IncidentDef>.GetNamed("RefugeePodCrash", false);
                     break;
-                case "chased":
-                    incident = DefDatabase<IncidentDef>.GetNamed("RefugeeChased", false);
-                    break;
                 case "pod":
                     incident = DefDatabase<IncidentDef>.GetNamed("ShipChunkDrop", false);
                     break;
@@ -68,8 +65,7 @@ namespace BeaconOfHope
             // Check if this is a potential beacon-influenced event
             bool isPotentialBeaconEvent = 
                 incident == IncidentDefOf.WandererJoin || 
-                incident.defName == "RefugeePodCrash" || 
-                incident.defName == "RefugeeChased" ||
+                incident.defName == "RefugeePodCrash" ||
                 incident.defName == "ShipChunkDrop" || 
                 incident.defName.Contains("TransportPod");
 
@@ -109,7 +105,7 @@ namespace BeaconOfHope
                 // Open broadcast slightly increases wanderer join events
                 multiplier += openBroadcastCount * 0.2f;
             }
-            else if (incident.defName == "RefugeePodCrash" || incident.defName == "RefugeeChased")
+            else if (incident.defName == "RefugeePodCrash")
             {
                 // Open broadcast significantly increases refugee events
                 multiplier += openBroadcastCount * 0.75f;
