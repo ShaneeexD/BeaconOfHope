@@ -179,6 +179,10 @@ namespace BeaconOfHope
                             BeaconUtility.TestTriggerEvent(parent.Map, "raid");
                         }));
                         
+                        options.Add(new FloatMenuOption("Test Lost Specialist", () => {
+                            BeaconUtility.TestTriggerEvent(parent.Map, "specialist");
+                        }));
+                        
                         Find.WindowStack.Add(new FloatMenu(options));
                     }
                 };

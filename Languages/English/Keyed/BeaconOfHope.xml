@@ -45,4 +45,8 @@
   <!-- Thoughts -->
   <ArrivedViaBeacon.Stage0.Label>answered beacon call</ArrivedViaBeacon.Stage0.Label>
   <ArrivedViaBeacon.Stage0.Description>I answered the call of a beacon of hope. I'm grateful to have found a new home.</ArrivedViaBeacon.Stage0.Description>
+  <!-- Lost Specialist Event -->
+  <BeaconLostSpecialistArrived>{0} Specialist Arrived</BeaconLostSpecialistArrived>
+  <BeaconLostSpecialistArrivedDesc>{0}, a skilled {1} specialist with level {2} expertise, has picked up your beacon's signal and joined your colony. They were separated from their caravan and have been wandering alone until they detected your beacon.</BeaconLostSpecialistArrivedDesc>
+  <TestLostSpecialist>Test Lost Specialist</TestLostSpecialist>
 </LanguageData>

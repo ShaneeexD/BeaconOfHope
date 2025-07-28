@@ -29,6 +29,9 @@ namespace BeaconOfHope
                 case "pod":
                     incident = DefDatabase<IncidentDef>.GetNamed("ShipChunkDrop", false);
                     break;
+                case "specialist":
+                    incident = DefDatabase<IncidentDef>.GetNamed("BeaconLostSpecialist", false);
+                    break;
                 case "raid":
                     incident = IncidentDefOf.RaidEnemy;
                     break;
@@ -67,7 +70,8 @@ namespace BeaconOfHope
                 incident == IncidentDefOf.WandererJoin || 
                 incident.defName == "RefugeePodCrash" ||
                 incident.defName == "ShipChunkDrop" || 
-                incident.defName.Contains("TransportPod");
+                incident.defName.Contains("TransportPod") ||
+                incident.defName == "BeaconLostSpecialist";
 
             if (map == null)
                 return 1f;

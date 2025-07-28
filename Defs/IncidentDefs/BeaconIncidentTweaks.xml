@@ -26,4 +26,31 @@
       </li>
     </stages>
   </ThoughtDef>
+  <!-- Custom incident for Lost Specialist event -->
+  <IncidentDef>
+    <defName>BeaconLostSpecialist</defName>
+    <label>lost specialist</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>BeaconOfHope.IncidentWorker_LostSpecialist</workerClass>
+    <baseChance>0.5</baseChance>
+    <category>Misc</category>
+    <minRefireDays>45</minRefireDays>
+    <populationEffect>IncreaseEasy</populationEffect>
+  </IncidentDef>
+  
+  <!-- Custom thought for specialists who arrived via beacon -->
+  <ThoughtDef>
+    <defName>SpecialistFoundBeacon</defName>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>found beacon of hope</label>
+        <description>I was lost and alone until I found this colony's beacon. I'm grateful to have found a place where my skills can be useful again.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
 </Defs>

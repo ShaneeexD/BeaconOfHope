@@ -66,6 +66,10 @@ namespace BeaconOfHope
             {
                 return "Warning: Your beacon signal has been intercepted by hostile forces!";
             }
+            else if (incident.defName == "BeaconLostSpecialist")
+            {
+                return "Your Beacon of Hope has attracted a lost but skilled specialist seeking a new home.";
+            }
             
             return null;
         }

@@ -50,7 +50,7 @@ Beacon of Hope is a RimWorld mod that adds a buildable beacon structure that att
 - The faction signal booster lets you directly request colonists for silver
 
 ## Credits
-- Created by [Your Name]
+- Created by ShaneeexD
 - Thanks to the RimWorld modding community for support and resources
 
 ## Feedback and Support
