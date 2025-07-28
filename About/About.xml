@@ -1,0 +1,9 @@
+<ModMetaData>
+  <name>Beacon of Hope</name>
+  <author>ShaneeexD</author>
+  <packageId>shaneeexd.beaconofhope</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Adds a buildable beacon structure that attracts new colonists through increased event chances. The beacon can operate in different modes to attract wanderers, trigger escape pods, or open broadcasts for refugees (with the risk of raids).</description>
+</ModMetaData>

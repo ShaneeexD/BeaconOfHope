@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!-- Advanced Beacon (Tier 2) -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>AdvancedBeacon</defName>
+    <label>advanced beacon of hope</label>
+    <description>An upgraded communication beacon with improved power efficiency and signal range. Can be configured to broadcast different signals, attracting colonists to your settlement with greater effectiveness.</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/Beacon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.4, 0.4)</volume>
+        <offset>(0,0,-0.3)</offset>
+      </shadowData>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Beacon</uiIconPath>
+    <uiIconScale>1.1</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>350</MaxHitPoints>
+      <WorkToBuild>3200</WorkToBuild>
+      <Mass>35</Mass>
+      <Flammability>0.8</Flammability>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <size>(2,2)</size>
+    <costList>
+      <Steel>150</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <Gold>10</Gold>
+    </costList>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>Misc</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>AdvancedBeaconResearch</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>300</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(140,220,230,0)</glowColor>
+      </li>
+      <li Class="BeaconOfHope.CompProperties_BeaconBroadcast">
+        <compClass>BeaconOfHope.CompBeaconBroadcast</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- Faction Signal Booster (Tier 3) -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>FactionSignalBooster</defName>
+    <label>faction signal booster</label>
+    <description>A highly advanced communication beacon with specialized targeting capabilities. Can directly request colonists from friendly factions at a silver cost, in addition to all standard beacon functionality.</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/Beacon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.4, 0.4)</volume>
+        <offset>(0,0,-0.3)</offset>
+      </shadowData>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Beacon</uiIconPath>
+    <uiIconScale>1.1</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>4000</WorkToBuild>
+      <Mass>40</Mass>
+      <Flammability>0.6</Flammability>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <size>(2,2)</size>
+    <costList>
+      <Steel>180</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+      <Gold>20</Gold>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>Misc</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>FactionSignalBoosterResearch</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>250</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Glower">
+        <glowRadius>10</glowRadius>
+        <glowColor>(160,240,255,0)</glowColor>
+      </li>
+      <li Class="BeaconOfHope.CompProperties_BeaconBroadcast">
+        <compClass>BeaconOfHope.CompBeaconBroadcast</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

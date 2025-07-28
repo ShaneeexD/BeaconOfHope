@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <!-- Building Labels and Descriptions -->
+  <BeaconOfHope.Label>beacon of hope</BeaconOfHope.Label>
+  <BeaconOfHope.Description>A powerful communication beacon that can be configured to broadcast different signals, attracting colonists to your settlement.</BeaconOfHope.Description>
+  <AdvancedBeacon.Label>advanced beacon of hope</AdvancedBeacon.Label>
+  <AdvancedBeacon.Description>An upgraded communication beacon with improved power efficiency and signal range.</AdvancedBeacon.Description>
+  <FactionSignalBooster.Label>faction signal booster</FactionSignalBooster.Label>
+  <FactionSignalBooster.Description>A highly advanced communication beacon with specialized targeting capabilities. Can directly request colonists from friendly factions at a silver cost.</FactionSignalBooster.Description>
+  
+  <!-- Research Labels and Descriptions -->
+  <BeaconOfHopeResearch.Label>beacon of hope</BeaconOfHopeResearch.Label>
+  <BeaconOfHopeResearch.Description>Build beacons that can attract new colonists to your settlement through increased event chances.</BeaconOfHopeResearch.Description>
+  <AdvancedBeaconResearch.Label>advanced beacon</AdvancedBeaconResearch.Label>
+  <AdvancedBeaconResearch.Description>Upgrade your beacons to use less power and have a longer range.</AdvancedBeaconResearch.Description>
+  <FactionSignalBoosterResearch.Label>faction signal booster</FactionSignalBoosterResearch.Label>
+  <FactionSignalBoosterResearch.Description>Upgrade your beacons to directly request colonists from friendly factions at a silver cost.</FactionSignalBoosterResearch.Description>
+  
+  <!-- UI Elements -->
+  <BeaconOfHope.SetBroadcastMode>Set Broadcast Mode</BeaconOfHope.SetBroadcastMode>
+  <BeaconOfHope.BroadcastModeDesc>Configure the beacon's broadcast mode.</BeaconOfHope.BroadcastModeDesc>
+  <BeaconOfHope.CurrentMode>Current Mode: {0}</BeaconOfHope.CurrentMode>
+  <BeaconOfHope.CurrentModeDesc>The current broadcast mode of this beacon.</BeaconOfHope.CurrentModeDesc>
+  <BeaconOfHope.BroadcastModeTitle>Beacon Broadcast Mode</BeaconOfHope.BroadcastModeTitle>
+  
+  <!-- Broadcast Modes -->
+  <BeaconOfHope.Mode.Off>Off</BeaconOfHope.Mode.Off>
+  <BeaconOfHope.Mode.Off.Desc>The beacon is powered but not broadcasting any signal.</BeaconOfHope.Mode.Off.Desc>
+  <BeaconOfHope.Mode.WandererMode>Wanderer Mode</BeaconOfHope.Mode.WandererMode>
+  <BeaconOfHope.Mode.WandererMode.Desc>Broadcasts a welcoming signal that increases the chance of wanderers joining your colony. Low power usage, minimal risk.</BeaconOfHope.Mode.WandererMode.Desc>
+  <BeaconOfHope.Mode.EmergencyChannel>Emergency Channel</BeaconOfHope.Mode.EmergencyChannel>
+  <BeaconOfHope.Mode.EmergencyChannel.Desc>Monitors emergency frequencies for distress signals, increasing the chance of escape pod crashes with survivors. Medium power usage, low risk.</BeaconOfHope.Mode.EmergencyChannel.Desc>
+  <BeaconOfHope.Mode.OpenBroadcast>Open Broadcast</BeaconOfHope.Mode.OpenBroadcast>
+  <BeaconOfHope.Mode.OpenBroadcast.Desc>Broadcasts your colony's location widely, attracting refugees but also potentially hostile raiders who intercept the signal. High power usage, high risk.</BeaconOfHope.Mode.OpenBroadcast.Desc>
+  
+  <!-- Messages -->
+  <BeaconOfHope.ModeChanged>Beacon of Hope mode changed to: {0}</BeaconOfHope.ModeChanged>
+  <BeaconOfHope.EventTriggered>Beacon of Hope has triggered a {0} event.</BeaconOfHope.EventTriggered>
+  <BeaconOfHope.WandererJoined>A wanderer has joined your colony, attracted by your Beacon of Hope.</BeaconOfHope.WandererJoined>
+  <BeaconOfHope.RequestColonist>Using the advanced signal booster technology, you can request a colonist from friendly factions at a cost of {0} silver. The colonist's skills and traits will be random, but they will arrive with positive feelings toward your colony.\n\nWould you like to proceed with the request?</BeaconOfHope.RequestColonist>
+  <BeaconOfHope.CannotAfford>Cannot afford to request colonist. Need {0} silver.</BeaconOfHope.CannotAfford>
+  <BeaconOfHope.ColonistArrived>{0} has arrived in response to your beacon signal.</BeaconOfHope.ColonistArrived>
+  <BeaconOfHope.RequestFailed>Failed to contact a new colonist. Your silver has been refunded.</BeaconOfHope.RequestFailed>
+  
+  <!-- Thoughts -->
+  <ArrivedViaBeacon.Stage0.Label>answered beacon call</ArrivedViaBeacon.Stage0.Label>
+  <ArrivedViaBeacon.Stage0.Description>I answered the call of a beacon of hope. I'm grateful to have found a new home.</ArrivedViaBeacon.Stage0.Description>
+</LanguageData>

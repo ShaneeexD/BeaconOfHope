@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>BeaconOfHope</defName>
+    <label>beacon of hope</label>
+    <description>A powerful communication beacon that can be configured to broadcast different signals, attracting colonists to your settlement. Can operate in different modes to attract wanderers, trigger escape pods, or open broadcasts for refugees (with the risk of raids).</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/Beacon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.4, 0.4)</volume>
+        <offset>(0,0,-0.3)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Beacon</uiIconPath>
+    <uiIconScale>1.1</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <WorkToBuild>2800</WorkToBuild>
+      <Mass>30</Mass>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <size>(2,2)</size>
+    <costList>
+      <Steel>120</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>Misc</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>BeaconOfHopeResearch</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>500</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(115,198,206,0)</glowColor>
+      </li>
+      <li Class="BeaconOfHope.CompProperties_BeaconBroadcast">
+        <compClass>BeaconOfHope.CompBeaconBroadcast</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- Research Definition -->
+  <ResearchProjectDef>
+    <defName>BeaconOfHopeResearch</defName>
+    <label>beacon of hope</label>
+    <description>Build beacons that can attract new colonists to your settlement through increased event chances.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>MicroelectronicsBasics</li>
+    </prerequisites>
+    <researchViewX>10</researchViewX>
+    <researchViewY>1</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- Advanced Beacon Research -->
+  <ResearchProjectDef>
+    <defName>AdvancedBeaconResearch</defName>
+    <label>advanced beacon</label>
+    <description>Upgrade your beacons to use less power and have a longer range.</description>
+    <baseCost>2000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>BeaconOfHopeResearch</li>
+    </prerequisites>
+    <researchViewX>10</researchViewX>
+    <researchViewY>1.5</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- Faction Signal Booster Research -->
+  <ResearchProjectDef>
+    <defName>FactionSignalBoosterResearch</defName>
+    <label>faction signal booster</label>
+    <description>Upgrade your beacons to directly request colonists from friendly factions at a silver cost.</description>
+    <baseCost>3000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>AdvancedBeaconResearch</li>
+    </prerequisites>
+    <researchViewX>10</researchViewX>
+    <researchViewY>2</researchViewY>
+  </ResearchProjectDef>
+</Defs>

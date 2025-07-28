@@ -1,0 +1,52 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.cache
+*.vspscc
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# NuGet packages
+packages/
+
+# Compiled DLLs in Assemblies folder (keep only final release versions)
+# Uncomment if you want to exclude compiled DLLs
+# Assemblies/*.dll
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Unity3D generated meta files
+*.pidb.meta
+
+# Log files
+*.log
+
+# Backup files
+*.backup
+
+# Documentation files that might be generated
+Documentation/

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!-- Custom incident for advanced beacon functionality (Tier 3 research) -->
+  <IncidentDef>
+    <defName>BeaconRequestColonist</defName>
+    <label>colonist request</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>BeaconOfHope.IncidentWorker_BeaconRequestColonist</workerClass>
+    <baseChance>0</baseChance> <!-- Only triggered manually -->
+    <category>Misc</category>
+    <minRefireDays>15</minRefireDays>
+  </IncidentDef>
+  
+  <!-- Custom thought for colonists who arrived via beacon -->
+  <ThoughtDef>
+    <defName>ArrivedViaBeacon</defName>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>answered beacon call</label>
+        <description>I answered the call of a beacon of hope. I'm grateful to have found a new home.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

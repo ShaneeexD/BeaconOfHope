@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <!-- Hospitality Compatibility - Increase guest frequency when beacon is active -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Hospitality</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs</xpath>
+          <value>
+            <BeaconOfHope.BeaconModIntegrationDef>
+              <defName>BeaconOfHope_HospitalityIntegration</defName>
+              <modName>Hospitality</modName>
+              <description>Increases guest visit frequency when beacons are active.</description>
+            </BeaconOfHope.BeaconModIntegrationDef>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+  
+  <!-- Vanilla Events Expanded Compatibility -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Vanilla Events Expanded</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs</xpath>
+          <value>
+            <BeaconOfHope.BeaconModIntegrationDef>
+              <defName>BeaconOfHope_VEEventsIntegration</defName>
+              <modName>Vanilla Events Expanded</modName>
+              <description>Adjusts various visitor and colonist-related events when beacons are active.</description>
+              <affectedIncidents>
+                <li>VEE_Reinforcement</li>
+                <li>VEE_RefugeeGroup</li>
+                <li>VEE_NewMember</li>
+              </affectedIncidents>
+            </BeaconOfHope.BeaconModIntegrationDef>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+  
+  <!-- RimQuest Compatibility -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>RimQuest</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs</xpath>
+          <value>
+            <BeaconOfHope.BeaconModIntegrationDef>
+              <defName>BeaconOfHope_RimQuestIntegration</defName>
+              <modName>RimQuest</modName>
+              <description>Allows beacons to discover new quests or refugee signals.</description>
+            </BeaconOfHope.BeaconModIntegrationDef>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>
