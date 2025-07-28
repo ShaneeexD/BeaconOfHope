@@ -35,6 +35,9 @@ namespace BeaconOfHope
                 case "raid":
                     incident = IncidentDefOf.RaidEnemy;
                     break;
+                case "requestcolonist":
+                    incident = DefDatabase<IncidentDef>.GetNamed("BeaconRequestColonist", false);
+                    break;
             }
             
             if (incident != null)

@@ -36,8 +36,8 @@ namespace BeaconOfHope
         {
             Map map = (Map)parms.target;
             
-            // Find a random beacon to use
-            Building beacon = map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("BeaconOfHope"))
+            // Find a faction signal booster to use
+            Building beacon = map.listerBuildings.AllBuildingsColonistOfDef(ThingDef.Named("FactionSignalBooster"))
                 .Where(b => b.GetComp<CompPowerTrader>()?.PowerOn == true)
                 .RandomElement();
                 
@@ -54,21 +54,40 @@ namespace BeaconOfHope
                 "Would you like to proceed with the request?");
                 
             DiaOption optionAccept = new DiaOption("Accept");
+            optionAccept.resolveTree = true;
             optionAccept.action = delegate
             {
-                // Deduct silver
-                Thing silver = map.resourceCounter.Silver >= silverCost ?
-                    ThingMaker.MakeThing(ThingDefOf.Silver) : null;
-                    
-                if (silver == null)
+                // Check if player has enough silver
+                if (map.resourceCounter.Silver < silverCost)
                 {
                     Messages.Message("Cannot afford to request colonist. Need " + silverCost + " silver.", 
                         MessageTypeDefOf.RejectInput);
                     return;
                 }
                 
-                silver.stackCount = silverCost;
-                silver.Destroy();
+                // Deduct silver by finding and removing silver from stockpiles
+                // Create a copy of the silver list to avoid modifying during enumeration
+                List<Thing> silverList = map.listerThings.ThingsOfDef(ThingDefOf.Silver).ToList();
+                int remainingCost = silverCost;
+                
+                // Process each pile separately to avoid collection modification issues
+                for (int i = 0; i < silverList.Count; i++)
+                {
+                    Thing silverPile = silverList[i];
+                    if (silverPile.IsInAnyStorage())
+                    {
+                        int amountToRemove = Math.Min(remainingCost, silverPile.stackCount);
+                        if (amountToRemove > 0)
+                        {
+                            Thing splitOff = silverPile.SplitOff(amountToRemove);
+                            splitOff.Destroy();
+                            remainingCost -= amountToRemove;
+                        }
+                        
+                        if (remainingCost <= 0)
+                            break;
+                    }
+                }
                 
                 // Generate pawn
                 Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDefOf.OutlanderCivil);

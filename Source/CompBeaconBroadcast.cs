@@ -153,6 +153,30 @@ namespace BeaconOfHope
                 action = () => {}
             };
             
+            // Request Colonist button - only for Faction Signal Booster
+            if (parent.def.defName == "FactionSignalBooster" && 
+                ResearchProjectDef.Named("FactionSignalBoosterResearch").IsFinished)
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = "Request Colonist",
+                    defaultDesc = "Request a colonist from a friendly faction at a cost of silver.",
+                    icon = ContentFinder<Texture2D>.Get("UI/Designators/Claim"),
+                    action = () => {
+                        // Get the incident worker
+                        IncidentDef incident = DefDatabase<IncidentDef>.GetNamed("BeaconRequestColonist", false);
+                        if (incident != null)
+                        {
+                            // Create incident parameters
+                            IncidentParms parms = StorytellerUtility.DefaultParmsNow(incident.category, parent.Map);
+                            
+                            // Execute the incident worker directly
+                            incident.Worker.TryExecute(parms);
+                        }
+                    }
+                };
+            }
+            
             // Debug test gizmos - only show in dev mode
             if (Prefs.DevMode)
             {
@@ -181,6 +205,10 @@ namespace BeaconOfHope
                         
                         options.Add(new FloatMenuOption("Test Lost Specialist", () => {
                             BeaconUtility.TestTriggerEvent(parent.Map, "specialist");
+                        }));
+                        
+                        options.Add(new FloatMenuOption("Test Request Colonist", () => {
+                            BeaconUtility.TestTriggerEvent(parent.Map, "requestcolonist");
                         }));
                         
                         Find.WindowStack.Add(new FloatMenu(options));
